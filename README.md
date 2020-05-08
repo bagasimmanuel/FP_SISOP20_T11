@@ -52,3 +52,64 @@ while(i < 99){
   i++;
 }
 ```
+
+## md5sum
+Source : [md5sum.c](/md5sum.c)
+
+Untuk fungsi md5 dengan menggunakan input file
+```
+    if(argc == 3) 
+    { 
+        if(strcmp(argv[1], "-f") == 0) 
+        { 
+            if((fd1=open(argv[2], O_RDONLY)) < 0) 
+            { 
+                printf(1, "Tidak bisa membuka file %s\n", argv[2]); 
+                exit(); 
+            } 
+            char buff[1000]; 
+            char output[1000]; 
+            read(fd1, buff, 1000); 
+            printf(1, "%s", buff); 
+            int i = 0; 
+            while(buff[i] != '\0') 
+            {
+                i++; 
+            } 
+            getmd5(buff, i-1, output); 
+            printf(1,"%s",output); 
+            exit(); 
+        }          
+    } 
+}
+```
+Untuk fungsi md5 dengan menggunakan input yang ditulis di terminal
+```
+    else 
+    {
+        int i; 
+        int len = 1; 
+        char * str; 
+        char output[1000]; 
+
+        for (i = 1; i < argc; i++) { 
+            len += strlen(argv[i]);   
+        } 
+
+        str = malloc(sizeof(char)*len); 
+        str[0] = '\0'; 
+
+        for (i = 1; i < argc; i++)  
+        {
+            strcat(str, argv[i]); 
+        } 
+
+        getmd5(str, len-1, output); 
+        printf(1, "%s\n", output); 
+
+        free(str); 
+        exit(); 
+    } 
+```
+
+Sisanya merupakan algoritma dari md5 itu sendiri.
