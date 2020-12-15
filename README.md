@@ -1,4 +1,7 @@
 # FP_SISOP20_T11
+# Fachrizal Rahmat Hidayat /05311840000005
+# Bagas Immanuel           /05311840000026
+
 # List Command :
 ## cmp , base64 , pwd
 
